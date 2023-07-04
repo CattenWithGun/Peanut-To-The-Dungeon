@@ -1,6 +1,4 @@
 # Peanut-To-The-Dungeon
 Peanut to the Dungeon is a game about a cat named Peanut, that goes to the Dungeon.
-I'm making this game open source for anybody who wants to look at the code for some reason.
-I'm supposed to "choose a license" for this thing, and I chose no license, instead, here is the license:
-
-I'm also happy to see anyone who wants to try to optimize the game more, or if they found a bug they can report it and if I get bored enough then I might fix it.
+I'm making this game open source for anybody who wants to look at the code / sprites for reference or learning.
+This game was made on Winforms with exclusively C#.
