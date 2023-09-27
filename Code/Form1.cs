@@ -489,9 +489,13 @@ namespace PeanutToTheDungeon
             {
                 if(WinSoundOut.PlaybackState == PlaybackState.Stopped && !winSoundPlayed)
                 {
-                    winSoundPlayed = true;
-                    WinSoundStream.CurrentTime = new TimeSpan(0);
-                    WinSoundOut.Play();
+                    try
+                    {
+                        winSoundPlayed = true;
+                        WinSoundStream.CurrentTime = new TimeSpan(0);
+                        WinSoundOut.Play();
+                    }
+                    catch { }
                 }
                 winTicks++;
                 if(winTicks > 400)
@@ -756,9 +760,13 @@ namespace PeanutToTheDungeon
                     nextBoxFloofJumpFrame = boxFloofJumpFrames[0];
                     if(BoxFloofJumpscareOut.PlaybackState == PlaybackState.Stopped && !boxFloofJumpscarePlayed)
                     {
-                        BoxFloofJumpscareStream.CurrentTime = new TimeSpan(0);
-                        BoxFloofJumpscareOut.Play();
-                        boxFloofJumpscarePlayed = true;
+                        try
+                        {
+                            BoxFloofJumpscareStream.CurrentTime = new TimeSpan(0);
+                            BoxFloofJumpscareOut.Play();
+                            boxFloofJumpscarePlayed = true;
+                        }
+                        catch { }
                     }
                 }
                 else if(boxFloofJumpTicks > 5 && boxFloofJumpTicks < 12)
@@ -906,9 +914,13 @@ namespace PeanutToTheDungeon
                     nextGhostyJumpFrame = ghostyJumpFrames[0];
                     if(GhostyJumpscareOut.PlaybackState == PlaybackState.Stopped && !ghostyJumpscarePlayed)
                     {
-                        GhostyJumpscareStream.CurrentTime = new TimeSpan(0);
-                        GhostyJumpscareOut.Play();
-                        ghostyJumpscarePlayed = true;
+                        try
+                        {
+                            GhostyJumpscareStream.CurrentTime = new TimeSpan(0);
+                            GhostyJumpscareOut.Play();
+                            ghostyJumpscarePlayed = true;
+                        }
+                        catch { }
                     }
                 }
                 else if(ghostyJumpTicks > 3 && ghostyJumpTicks < 8)
@@ -1114,9 +1126,11 @@ namespace PeanutToTheDungeon
                     nextBlubJumpFrame = blubJumpFrames[0];
                     if(BlubJumpscareOut.PlaybackState == PlaybackState.Stopped && !blubJumpscarePlayed)
                     {
-                        BlubJumpscareStream.CurrentTime = new TimeSpan(0);
-                        BlubJumpscareOut.Play();
-                        blubJumpscarePlayed = true;
+                        try
+                        {
+
+                        }
+                        catch { }
                     }
                 }
                 else if(blubJumpTicks > 5 && blubJumpTicks < 12)
@@ -1434,9 +1448,13 @@ namespace PeanutToTheDungeon
                 {
                     if(DisappointedMeowOut.PlaybackState == PlaybackState.Stopped && !disappointedMeowPlayed)
                     {
-                        DisappointedMeowStream.CurrentTime = new TimeSpan(0);
-                        DisappointedMeowOut.Play();
-                        disappointedMeowPlayed = true;
+                        try
+                        {
+                            DisappointedMeowStream.CurrentTime = new TimeSpan(0);
+                            DisappointedMeowOut.Play();
+                            disappointedMeowPlayed = true;
+                        }
+                        catch { }
                     }
                     isRestarting = true;
                     nextRestartMessageFrame = restartMessage[0];
@@ -1452,11 +1470,10 @@ namespace PeanutToTheDungeon
                     nextRestartMessageFrame = restartMessage[2];
                     endTicks++;
                 }
-                else
+                else if(endTicks >= 48)
                 {
                     ResetGame();
                 }
-                return;
             }
             //Decreases scared meter
             if(lanternFuel > 0 && scaredMeter - 1 >= 0 && scaredMeterDecreaseTicks >= 10)
@@ -1896,8 +1913,12 @@ namespace PeanutToTheDungeon
                     isLoafSleeping = true;
                     if(PeanutPurrOut.PlaybackState == PlaybackState.Stopped && !win)
                     {
-                        PeanutPurrStream.CurrentTime = new TimeSpan(0);
-                        PeanutPurrOut.Play();
+                        try
+                        {
+                            PeanutPurrStream.CurrentTime = new TimeSpan(0);
+                            PeanutPurrOut.Play();
+                        }
+                        catch { }
                     }
                 }
                 //Animates the peanut sleeping right
@@ -2031,8 +2052,12 @@ namespace PeanutToTheDungeon
                 WaveStream[] ambientSoundStreams = { BrickFallStream, DistantMeowStream, MetalClangStream, WindStream, WoodCreakStream };
                 WaveOut[] ambientSoundOuts = { BrickFallOut, DistantMeowOut, MetalClangOut, WindOut, WoodCreakOut };
                 int randomSoundIndex = random.Next(0, 5);
-                ambientSoundStreams[randomSoundIndex].CurrentTime = new TimeSpan(0);
-                ambientSoundOuts[randomSoundIndex].Play();
+                try
+                {
+                    ambientSoundStreams[randomSoundIndex].CurrentTime = new TimeSpan(0);
+                    ambientSoundOuts[randomSoundIndex].Play();
+                }
+                catch { }
                 AmbientSoundTimer.Interval = random.Next(15, 31) * 1000;
             }
         }
@@ -2041,8 +2066,12 @@ namespace PeanutToTheDungeon
         {
             if(RefillLanternOut.PlaybackState == PlaybackState.Stopped)
             {
-                RefillLanternStream.CurrentTime = new TimeSpan(0);
-                RefillLanternOut.Play();
+                try
+                {
+                    RefillLanternStream.CurrentTime = new TimeSpan(0);
+                    RefillLanternOut.Play();
+                }
+                catch { }
             }
         }
 
@@ -2057,8 +2086,12 @@ namespace PeanutToTheDungeon
                 }
                 else if(IsBoopBounds(e.X, e.Y) && BoopOut.PlaybackState == PlaybackState.Stopped)
                 {
-                    BoopStream.CurrentTime = new TimeSpan(0);
-                    BoopOut.Play();
+                    try
+                    {
+                        BoopStream.CurrentTime = new TimeSpan(0);
+                        BoopOut.Play();
+                    }
+                    catch { }
                 }
             }
         }
